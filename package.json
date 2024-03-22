@@ -1,7 +1,6 @@
 {
     "name": "@passageidentity/passage-node",
     "type": "module",
-    "version": "2.9.0",
     "devDependencies": {
         "@types/express": "^4.17.21",
         "@types/jest": "^27.0.1",
