@@ -1,4 +1,4 @@
-import { ResponseError } from '../generated';
+import { ResponseError } from '../generated/runtime.js';
 
 /**
  * Passage Class
@@ -6,7 +6,7 @@ import { ResponseError } from '../generated';
 export class PassageError extends Error {
     readonly statusCode: number | undefined;
     readonly error: string | undefined;
-    readonly message: string;
+    override readonly message: string;
 
     /**
      * Initialize a new PassageError instance.

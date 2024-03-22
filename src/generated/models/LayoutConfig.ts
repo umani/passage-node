@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -69,7 +68,7 @@ export function LayoutConfigFromJSON(json: any): LayoutConfig {
     return LayoutConfigFromJSONTyped(json, false);
 }
 
-export function LayoutConfigFromJSONTyped(json: any, ignoreDiscriminator: boolean): LayoutConfig {
+export function LayoutConfigFromJSONTyped(json: any, _ignoreDiscriminator: boolean): LayoutConfig {
     if ((json === undefined) || (json === null)) {
         return json;
     }

@@ -32,7 +32,7 @@ export function UserMetadataFieldTypeFromJSON(json: any): UserMetadataFieldType 
     return UserMetadataFieldTypeFromJSONTyped(json, false);
 }
 
-export function UserMetadataFieldTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserMetadataFieldType {
+export function UserMetadataFieldTypeFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserMetadataFieldType {
     return json as UserMetadataFieldType;
 }
 

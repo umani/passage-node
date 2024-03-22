@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -69,7 +68,7 @@ export function UserRecentEventFromJSON(json: any): UserRecentEvent {
     return UserRecentEventFromJSONTyped(json, false);
 }
 
-export function UserRecentEventFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserRecentEvent {
+export function UserRecentEventFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserRecentEvent {
     if ((json === undefined) || (json === null)) {
         return json;
     }

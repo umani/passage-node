@@ -12,37 +12,32 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { AuthMethods } from './AuthMethods';
+import { exists } from '../runtime.js';
+import type { AuthMethods } from './AuthMethods.js';
 import {
     AuthMethodsFromJSON,
-    AuthMethodsFromJSONTyped,
     AuthMethodsToJSON,
-} from './AuthMethods';
-import type { ElementCustomization } from './ElementCustomization';
+} from './AuthMethods.js';
+import type { ElementCustomization } from './ElementCustomization.js';
 import {
     ElementCustomizationFromJSON,
-    ElementCustomizationFromJSONTyped,
     ElementCustomizationToJSON,
-} from './ElementCustomization';
-import type { Layouts } from './Layouts';
+} from './ElementCustomization.js';
+import type { Layouts } from './Layouts.js';
 import {
     LayoutsFromJSON,
-    LayoutsFromJSONTyped,
     LayoutsToJSON,
-} from './Layouts';
-import type { Technologies } from './Technologies';
+} from './Layouts.js';
+import type { Technologies } from './Technologies.js';
 import {
     TechnologiesFromJSON,
-    TechnologiesFromJSONTyped,
     TechnologiesToJSON,
-} from './Technologies';
-import type { UserMetadataField } from './UserMetadataField';
+} from './Technologies.js';
+import type { UserMetadataField } from './UserMetadataField.js';
 import {
     UserMetadataFieldFromJSON,
-    UserMetadataFieldFromJSONTyped,
     UserMetadataFieldToJSON,
-} from './UserMetadataField';
+} from './UserMetadataField.js';
 
 /**
  * 
@@ -347,7 +342,7 @@ export function AppInfoFromJSON(json: any): AppInfo {
     return AppInfoFromJSONTyped(json, false);
 }
 
-export function AppInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): AppInfo {
+export function AppInfoFromJSONTyped(json: any, _ignoreDiscriminator: boolean): AppInfo {
     if ((json === undefined) || (json === null)) {
         return json;
     }

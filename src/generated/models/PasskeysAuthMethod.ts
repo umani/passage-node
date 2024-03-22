@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -41,7 +40,7 @@ export function PasskeysAuthMethodFromJSON(json: any): PasskeysAuthMethod {
     return PasskeysAuthMethodFromJSONTyped(json, false);
 }
 
-export function PasskeysAuthMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): PasskeysAuthMethod {
+export function PasskeysAuthMethodFromJSONTyped(json: any, _ignoreDiscriminator: boolean): PasskeysAuthMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }

@@ -1,4 +1,4 @@
-import { AuthStrategy } from './AuthStrategy';
+import { AuthStrategy } from './AuthStrategy.js';
 
 export type PassageConfig = {
     appID: string;

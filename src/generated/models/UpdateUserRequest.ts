@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { exists } from '../runtime.js';
 /**
  * 
  * @export
@@ -42,7 +42,7 @@ export interface UpdateUserRequest {
 /**
  * Check if a given object implements the UpdateUserRequest interface.
  */
-export function instanceOfUpdateUserRequest(value: object): boolean {
+export function instanceOfUpdateUserRequest(_value: object): boolean {
     let isInstance = true;
 
     return isInstance;
@@ -52,7 +52,7 @@ export function UpdateUserRequestFromJSON(json: any): UpdateUserRequest {
     return UpdateUserRequestFromJSONTyped(json, false);
 }
 
-export function UpdateUserRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateUserRequest {
+export function UpdateUserRequestFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UpdateUserRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }

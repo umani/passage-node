@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { UserMetadataFieldType } from './UserMetadataFieldType';
+import type { UserMetadataFieldType } from './UserMetadataFieldType.js';
 import {
     UserMetadataFieldTypeFromJSON,
-    UserMetadataFieldTypeFromJSONTyped,
     UserMetadataFieldTypeToJSON,
-} from './UserMetadataFieldType';
+} from './UserMetadataFieldType.js';
 
 /**
  * 
@@ -83,7 +81,7 @@ export function UserMetadataFieldFromJSON(json: any): UserMetadataField {
     return UserMetadataFieldFromJSONTyped(json, false);
 }
 
-export function UserMetadataFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserMetadataField {
+export function UserMetadataFieldFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserMetadataField {
     if ((json === undefined) || (json === null)) {
         return json;
     }

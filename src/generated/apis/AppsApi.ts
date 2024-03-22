@@ -13,23 +13,8 @@
  */
 
 
-import * as runtime from '../runtime';
-import type {
-  AppResponse,
-  Model401Error,
-  Model404Error,
-  Model500Error,
-} from '../models/index';
-import {
-    AppResponseFromJSON,
-    AppResponseToJSON,
-    Model401ErrorFromJSON,
-    Model401ErrorToJSON,
-    Model404ErrorFromJSON,
-    Model404ErrorToJSON,
-    Model500ErrorFromJSON,
-    Model500ErrorToJSON,
-} from '../models/index';
+import { BaseAPI, InitOverrideFunction, ApiResponse, RequiredError, HTTPHeaders, JSONApiResponse } from '../runtime.js';
+import { type AppResponse, AppResponseFromJSON } from '../models/AppResponse.js';
 
 export interface GetAppRequest {
     appId: string;
@@ -38,20 +23,20 @@ export interface GetAppRequest {
 /**
  * 
  */
-export class AppsApi extends runtime.BaseAPI {
+export class AppsApi extends BaseAPI {
 
     /**
      * Get app information.
      * Get App
      */
-    async getAppRaw(requestParameters: GetAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppResponse>> {
+    async getAppRaw(requestParameters: GetAppRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<AppResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getApp.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getApp.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -68,14 +53,14 @@ export class AppsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AppResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => AppResponseFromJSON(jsonValue));
     }
 
     /**
      * Get app information.
      * Get App
      */
-    async getApp(requestParameters: GetAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponse> {
+    async getApp(requestParameters: GetAppRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<AppResponse> {
         const response = await this.getAppRaw(requestParameters, initOverrides);
         return await response.value();
     }

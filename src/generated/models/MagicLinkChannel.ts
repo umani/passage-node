@@ -28,7 +28,7 @@ export function MagicLinkChannelFromJSON(json: any): MagicLinkChannel {
     return MagicLinkChannelFromJSONTyped(json, false);
 }
 
-export function MagicLinkChannelFromJSONTyped(json: any, ignoreDiscriminator: boolean): MagicLinkChannel {
+export function MagicLinkChannelFromJSONTyped(json: any, _ignoreDiscriminator: boolean): MagicLinkChannel {
     return json as MagicLinkChannel;
 }
 

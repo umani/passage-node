@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { exists } from '../runtime.js';
 /**
  * 
  * @export
@@ -30,7 +30,7 @@ export interface UpdatePasskeysAuthMethod {
 /**
  * Check if a given object implements the UpdatePasskeysAuthMethod interface.
  */
-export function instanceOfUpdatePasskeysAuthMethod(value: object): boolean {
+export function instanceOfUpdatePasskeysAuthMethod(_value: object): boolean {
     let isInstance = true;
 
     return isInstance;
@@ -40,7 +40,7 @@ export function UpdatePasskeysAuthMethodFromJSON(json: any): UpdatePasskeysAuthM
     return UpdatePasskeysAuthMethodFromJSONTyped(json, false);
 }
 
-export function UpdatePasskeysAuthMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdatePasskeysAuthMethod {
+export function UpdatePasskeysAuthMethodFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UpdatePasskeysAuthMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }

@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { TtlDisplayUnit } from './TtlDisplayUnit';
+import type { TtlDisplayUnit } from './TtlDisplayUnit.js';
 import {
     TtlDisplayUnitFromJSON,
-    TtlDisplayUnitFromJSONTyped,
     TtlDisplayUnitToJSON,
-} from './TtlDisplayUnit';
+} from './TtlDisplayUnit.js';
 
 /**
  * 
@@ -63,7 +61,7 @@ export function OtpAuthMethodFromJSON(json: any): OtpAuthMethod {
     return OtpAuthMethodFromJSONTyped(json, false);
 }
 
-export function OtpAuthMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): OtpAuthMethod {
+export function OtpAuthMethodFromJSONTyped(json: any, _ignoreDiscriminator: boolean): OtpAuthMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }

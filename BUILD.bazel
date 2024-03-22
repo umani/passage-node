@@ -1,0 +1,44 @@
+load("@aspect_rules_js//npm:defs.bzl", "npm_package")
+load("@aspect_rules_swc//swc:defs.bzl", "swc")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config", "ts_project")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("//build:ts_to_js.bzl", "ts_to_js")
+
+npm_link_all_packages(name = "node_modules")
+
+SRCS = glob(
+    [
+        "src/**/*.ts",
+    ],
+)
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
+    deps = ["//:tsconfig_base"],
+)
+
+ts_project(
+    name = "passage_node_ts",
+    srcs = SRCS + ["package.json"],
+    declaration = True,
+    extends = "tsconfig",
+    supports_workers = 0,
+    transpiler = swc,
+    deps = [":node_modules"],
+)
+
+files = ts_to_js(
+    srcs = SRCS,
+)
+
+npm_package(
+    name = "passage-node",
+    srcs = files.js_files + files.declaration_files + ["package.json"],
+    package = "@passageidentity/passage-node",
+    root_paths = [
+        package_name(),
+        package_name() + "/src",
+    ],
+    visibility = ["//visibility:public"],
+)

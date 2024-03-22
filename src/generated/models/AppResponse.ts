@@ -12,13 +12,8 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { AppInfo } from './AppInfo';
-import {
-    AppInfoFromJSON,
-    AppInfoFromJSONTyped,
-    AppInfoToJSON,
-} from './AppInfo';
+import type { AppInfo } from './AppInfo.js';
+import { AppInfoFromJSON, AppInfoToJSON } from './AppInfo.js';
 
 /**
  * 
@@ -48,7 +43,7 @@ export function AppResponseFromJSON(json: any): AppResponse {
     return AppResponseFromJSONTyped(json, false);
 }
 
-export function AppResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): AppResponse {
+export function AppResponseFromJSONTyped(json: any, _ignoreDiscriminator: boolean): AppResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }

@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * Contains the light and dark SVG icons that represent the brand of those devices
  * Values can be null or base64 encoded SVG. Example of SVG output: 
@@ -50,7 +49,7 @@ export function WebAuthnIconsFromJSON(json: any): WebAuthnIcons {
     return WebAuthnIconsFromJSONTyped(json, false);
 }
 
-export function WebAuthnIconsFromJSONTyped(json: any, ignoreDiscriminator: boolean): WebAuthnIcons {
+export function WebAuthnIconsFromJSONTyped(json: any, _ignoreDiscriminator: boolean): WebAuthnIcons {
     if ((json === undefined) || (json === null)) {
         return json;
     }

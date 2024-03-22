@@ -1,12 +1,17 @@
 import { decodeProtectedHeader, jwtVerify, createRemoteJWKSet } from 'jose';
-import { AuthStrategy } from '../types/AuthStrategy';
-import { PassageConfig } from '../types/PassageConfig';
-import { PassageError } from './PassageError';
-import User from './User';
-import { AppInfo, AppsApi, CreateMagicLinkRequest, MagicLink, MagicLinksApi, ResponseError } from '../generated';
-import apiConfiguration from '../utils/apiConfiguration';
+import { type AuthStrategy } from '../types/AuthStrategy.js';
+import { type PassageConfig } from '../types/PassageConfig.js';
+import { PassageError } from './PassageError.js';
+import { User } from './User.js';
+import { AppInfo } from '../generated/models/AppInfo.js';
+import { AppsApi } from '../generated/apis/AppsApi.js';
+import { MagicLink } from '../generated/models/MagicLink.js';
+import { MagicLinksApi } from '../generated/apis/MagicLinksApi.js';
+import { ResponseError } from '../generated/runtime.js';
+import { apiConfiguration } from '../utils/apiConfiguration.js';
 import { IncomingMessage } from 'http';
-import { getHeaderFromRequest } from '../utils/getHeader';
+import { getHeaderFromRequest } from '../utils/getHeader.js';
+import { CreateMagicLinkRequest } from '../generated/models/CreateMagicLinkRequest.js';
 
 /**
  * Passage Class
@@ -82,6 +87,9 @@ export default class Passage {
             throw new PassageError('Header authorization not found. You must catch this error.');
         } else {
             const authToken = (authorization as string).split(' ')[1];
+            if (authToken == undefined) {
+                throw new Error('Auth token is empty');
+            }
             const userID = await this.validAuthToken(authToken);
             if (userID) {
                 return userID;

@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -62,7 +61,7 @@ export function GoogleUserSocialConnectionFromJSON(json: any): GoogleUserSocialC
     return GoogleUserSocialConnectionFromJSONTyped(json, false);
 }
 
-export function GoogleUserSocialConnectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): GoogleUserSocialConnection {
+export function GoogleUserSocialConnectionFromJSONTyped(json: any, _ignoreDiscriminator: boolean): GoogleUserSocialConnection {
     if ((json === undefined) || (json === null)) {
         return json;
     }

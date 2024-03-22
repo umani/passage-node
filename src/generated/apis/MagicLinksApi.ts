@@ -13,29 +13,9 @@
  */
 
 
-import * as runtime from '../runtime';
-import type {
-  CreateMagicLinkRequest,
-  MagicLinkResponse,
-  Model400Error,
-  Model401Error,
-  Model404Error,
-  Model500Error,
-} from '../models/index';
-import {
-    CreateMagicLinkRequestFromJSON,
-    CreateMagicLinkRequestToJSON,
-    MagicLinkResponseFromJSON,
-    MagicLinkResponseToJSON,
-    Model400ErrorFromJSON,
-    Model400ErrorToJSON,
-    Model401ErrorFromJSON,
-    Model401ErrorToJSON,
-    Model404ErrorFromJSON,
-    Model404ErrorToJSON,
-    Model500ErrorFromJSON,
-    Model500ErrorToJSON,
-} from '../models/index';
+import { RequiredError, BaseAPI, HTTPHeaders, JSONApiResponse, InitOverrideFunction, ApiResponse } from '../runtime.js';
+import { type CreateMagicLinkRequest, CreateMagicLinkRequestToJSON } from '../models/CreateMagicLinkRequest.js';
+import { type MagicLinkResponse, MagicLinkResponseFromJSON } from '../models/MagicLinkResponse.js';
 
 export interface CreateMagicLinkOperationRequest {
     appId: string;
@@ -45,24 +25,24 @@ export interface CreateMagicLinkOperationRequest {
 /**
  * 
  */
-export class MagicLinksApi extends runtime.BaseAPI {
+export class MagicLinksApi extends BaseAPI {
 
     /**
      * Create magic link for a user.
      * Create Embeddable Magic Link
      */
-    async createMagicLinkRaw(requestParameters: CreateMagicLinkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MagicLinkResponse>> {
+    async createMagicLinkRaw(requestParameters: CreateMagicLinkOperationRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<MagicLinkResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createMagicLink.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createMagicLink.');
         }
 
         if (requestParameters.createMagicLinkRequest === null || requestParameters.createMagicLinkRequest === undefined) {
-            throw new runtime.RequiredError('createMagicLinkRequest','Required parameter requestParameters.createMagicLinkRequest was null or undefined when calling createMagicLink.');
+            throw new RequiredError('createMagicLinkRequest','Required parameter requestParameters.createMagicLinkRequest was null or undefined when calling createMagicLink.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
 
@@ -82,14 +62,14 @@ export class MagicLinksApi extends runtime.BaseAPI {
             body: CreateMagicLinkRequestToJSON(requestParameters.createMagicLinkRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => MagicLinkResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => MagicLinkResponseFromJSON(jsonValue));
     }
 
     /**
      * Create magic link for a user.
      * Create Embeddable Magic Link
      */
-    async createMagicLink(requestParameters: CreateMagicLinkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MagicLinkResponse> {
+    async createMagicLink(requestParameters: CreateMagicLinkOperationRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<MagicLinkResponse> {
         const response = await this.createMagicLinkRaw(requestParameters, initOverrides);
         return await response.value();
     }

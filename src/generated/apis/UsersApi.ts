@@ -13,32 +13,12 @@
  */
 
 
-import * as runtime from '../runtime';
-import type {
-  CreateUserRequest,
-  Model400Error,
-  Model401Error,
-  Model404Error,
-  Model500Error,
-  UpdateUserRequest,
-  UserResponse,
-} from '../models/index';
-import {
-    CreateUserRequestFromJSON,
-    CreateUserRequestToJSON,
-    Model400ErrorFromJSON,
-    Model400ErrorToJSON,
-    Model401ErrorFromJSON,
-    Model401ErrorToJSON,
-    Model404ErrorFromJSON,
-    Model404ErrorToJSON,
-    Model500ErrorFromJSON,
-    Model500ErrorToJSON,
-    UpdateUserRequestFromJSON,
-    UpdateUserRequestToJSON,
-    UserResponseFromJSON,
-    UserResponseToJSON,
-} from '../models/index';
+import { RequiredError, HTTPHeaders, BaseAPI, VoidApiResponse, JSONApiResponse, InitOverrideFunction, ApiResponse } from '../runtime.js';
+import { type CreateUserRequest, CreateUserRequestToJSON } from '../models/CreateUserRequest.js';
+import { type UpdateUserRequest, UpdateUserRequestToJSON } from '../models/UpdateUserRequest.js';
+import { type UserResponse } from '../models/UserResponse.js';
+import { UserResponseFromJSON } from '../models/UserResponse.js';
+
 
 export interface ActivateUserRequest {
     appId: string;
@@ -74,24 +54,24 @@ export interface UpdateUserOperationRequest {
 /**
  * 
  */
-export class UsersApi extends runtime.BaseAPI {
+export class UsersApi extends BaseAPI {
 
     /**
      * Activate a user. They will now be able to login.
      * Activate User
      */
-    async activateUserRaw(requestParameters: ActivateUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async activateUserRaw(requestParameters: ActivateUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<UserResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling activateUser.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling activateUser.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling activateUser.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling activateUser.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -108,14 +88,14 @@ export class UsersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }
 
     /**
      * Activate a user. They will now be able to login.
      * Activate User
      */
-    async activateUser(requestParameters: ActivateUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
+    async activateUser(requestParameters: ActivateUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<UserResponse> {
         const response = await this.activateUserRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -124,18 +104,18 @@ export class UsersApi extends runtime.BaseAPI {
      * Create user for an application. Must provide an email of phone number identifier.
      * Create User
      */
-    async createUserRaw(requestParameters: CreateUserOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async createUserRaw(requestParameters: CreateUserOperationRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<UserResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createUser.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createUser.');
         }
 
         if (requestParameters.createUserRequest === null || requestParameters.createUserRequest === undefined) {
-            throw new runtime.RequiredError('createUserRequest','Required parameter requestParameters.createUserRequest was null or undefined when calling createUser.');
+            throw new RequiredError('createUserRequest','Required parameter requestParameters.createUserRequest was null or undefined when calling createUser.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
 
@@ -155,14 +135,14 @@ export class UsersApi extends runtime.BaseAPI {
             body: CreateUserRequestToJSON(requestParameters.createUserRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }
 
     /**
      * Create user for an application. Must provide an email of phone number identifier.
      * Create User
      */
-    async createUser(requestParameters: CreateUserOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
+    async createUser(requestParameters: CreateUserOperationRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<UserResponse> {
         const response = await this.createUserRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -171,18 +151,18 @@ export class UsersApi extends runtime.BaseAPI {
      * Deactivate a user. Their account will still exist, but they will not be able to login.
      * Deactivate User
      */
-    async deactivateUserRaw(requestParameters: DeactivateUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async deactivateUserRaw(requestParameters: DeactivateUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<UserResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deactivateUser.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deactivateUser.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deactivateUser.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deactivateUser.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -199,14 +179,14 @@ export class UsersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }
 
     /**
      * Deactivate a user. Their account will still exist, but they will not be able to login.
      * Deactivate User
      */
-    async deactivateUser(requestParameters: DeactivateUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
+    async deactivateUser(requestParameters: DeactivateUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<UserResponse> {
         const response = await this.deactivateUserRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -215,18 +195,18 @@ export class UsersApi extends runtime.BaseAPI {
      * Delete a user.
      * Delete User
      */
-    async deleteUserRaw(requestParameters: DeleteUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteUserRaw(requestParameters: DeleteUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deleteUser.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deleteUser.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deleteUser.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deleteUser.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -243,14 +223,14 @@ export class UsersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new VoidApiResponse(response);
     }
 
     /**
      * Delete a user.
      * Delete User
      */
-    async deleteUser(requestParameters: DeleteUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async deleteUser(requestParameters: DeleteUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<void> {
         await this.deleteUserRaw(requestParameters, initOverrides);
     }
 
@@ -258,18 +238,18 @@ export class UsersApi extends runtime.BaseAPI {
      * Get information about a user.
      * Get User
      */
-    async getUserRaw(requestParameters: GetUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async getUserRaw(requestParameters: GetUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<UserResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getUser.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getUser.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getUser.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getUser.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -286,14 +266,14 @@ export class UsersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }
 
     /**
      * Get information about a user.
      * Get User
      */
-    async getUser(requestParameters: GetUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
+    async getUser(requestParameters: GetUserRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<UserResponse> {
         const response = await this.getUserRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -302,22 +282,22 @@ export class UsersApi extends runtime.BaseAPI {
      * Update a user\'s information.
      * Update User
      */
-    async updateUserRaw(requestParameters: UpdateUserOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async updateUserRaw(requestParameters: UpdateUserOperationRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<UserResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateUser.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateUser.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling updateUser.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling updateUser.');
         }
 
         if (requestParameters.updateUserRequest === null || requestParameters.updateUserRequest === undefined) {
-            throw new runtime.RequiredError('updateUserRequest','Required parameter requestParameters.updateUserRequest was null or undefined when calling updateUser.');
+            throw new RequiredError('updateUserRequest','Required parameter requestParameters.updateUserRequest was null or undefined when calling updateUser.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
 
@@ -337,14 +317,14 @@ export class UsersApi extends runtime.BaseAPI {
             body: UpdateUserRequestToJSON(requestParameters.updateUserRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }
 
     /**
      * Update a user\'s information.
      * Update User
      */
-    async updateUser(requestParameters: UpdateUserOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
+    async updateUser(requestParameters: UpdateUserOperationRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<UserResponse> {
         const response = await this.updateUserRaw(requestParameters, initOverrides);
         return await response.value();
     }

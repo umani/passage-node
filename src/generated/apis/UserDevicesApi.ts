@@ -13,23 +13,8 @@
  */
 
 
-import * as runtime from '../runtime';
-import type {
-  ListDevicesResponse,
-  Model401Error,
-  Model404Error,
-  Model500Error,
-} from '../models/index';
-import {
-    ListDevicesResponseFromJSON,
-    ListDevicesResponseToJSON,
-    Model401ErrorFromJSON,
-    Model401ErrorToJSON,
-    Model404ErrorFromJSON,
-    Model404ErrorToJSON,
-    Model500ErrorFromJSON,
-    Model500ErrorToJSON,
-} from '../models/index';
+import { RequiredError, BaseAPI, HTTPHeaders, VoidApiResponse, JSONApiResponse, InitOverrideFunction, ApiResponse } from '../runtime.js';
+import { type ListDevicesResponse, ListDevicesResponseFromJSON } from '../models/ListDevicesResponse.js';
 
 export interface DeleteUserDevicesRequest {
     appId: string;
@@ -45,28 +30,28 @@ export interface ListUserDevicesRequest {
 /**
  * 
  */
-export class UserDevicesApi extends runtime.BaseAPI {
+export class UserDevicesApi extends BaseAPI {
 
     /**
      * Delete a device for a user.
      * Delete a device for a user
      */
-    async deleteUserDevicesRaw(requestParameters: DeleteUserDevicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteUserDevicesRaw(requestParameters: DeleteUserDevicesRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deleteUserDevices.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deleteUserDevices.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deleteUserDevices.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deleteUserDevices.');
         }
 
         if (requestParameters.deviceId === null || requestParameters.deviceId === undefined) {
-            throw new runtime.RequiredError('deviceId','Required parameter requestParameters.deviceId was null or undefined when calling deleteUserDevices.');
+            throw new RequiredError('deviceId','Required parameter requestParameters.deviceId was null or undefined when calling deleteUserDevices.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -83,14 +68,14 @@ export class UserDevicesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new VoidApiResponse(response);
     }
 
     /**
      * Delete a device for a user.
      * Delete a device for a user
      */
-    async deleteUserDevices(requestParameters: DeleteUserDevicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async deleteUserDevices(requestParameters: DeleteUserDevicesRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<void> {
         await this.deleteUserDevicesRaw(requestParameters, initOverrides);
     }
 
@@ -98,18 +83,18 @@ export class UserDevicesApi extends runtime.BaseAPI {
      * List user devices.
      * List User Devices
      */
-    async listUserDevicesRaw(requestParameters: ListUserDevicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListDevicesResponse>> {
+    async listUserDevicesRaw(requestParameters: ListUserDevicesRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<ListDevicesResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling listUserDevices.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling listUserDevices.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling listUserDevices.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling listUserDevices.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -126,16 +111,15 @@ export class UserDevicesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListDevicesResponseFromJSON(jsonValue));
+        return new JSONApiResponse(response, (jsonValue) => ListDevicesResponseFromJSON(jsonValue));
     }
 
     /**
      * List user devices.
      * List User Devices
      */
-    async listUserDevices(requestParameters: ListUserDevicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListDevicesResponse> {
+    async listUserDevices(requestParameters: ListUserDevicesRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ListDevicesResponse> {
         const response = await this.listUserDevicesRaw(requestParameters, initOverrides);
         return await response.value();
     }
-
 }

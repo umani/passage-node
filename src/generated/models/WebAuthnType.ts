@@ -29,7 +29,7 @@ export function WebAuthnTypeFromJSON(json: any): WebAuthnType {
     return WebAuthnTypeFromJSONTyped(json, false);
 }
 
-export function WebAuthnTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): WebAuthnType {
+export function WebAuthnTypeFromJSONTyped(json: any, _ignoreDiscriminator: boolean): WebAuthnType {
     return json as WebAuthnType;
 }
 

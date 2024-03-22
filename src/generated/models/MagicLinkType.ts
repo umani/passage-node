@@ -28,7 +28,7 @@ export function MagicLinkTypeFromJSON(json: any): MagicLinkType {
     return MagicLinkTypeFromJSONTyped(json, false);
 }
 
-export function MagicLinkTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): MagicLinkType {
+export function MagicLinkTypeFromJSONTyped(json: any, _ignoreDiscriminator: boolean): MagicLinkType {
     return json as MagicLinkType;
 }
 

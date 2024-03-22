@@ -1,21 +1,17 @@
-import { PassageConfig } from '../types/PassageConfig';
-import { PassageError } from './PassageError';
-import apiConfiguration from '../utils/apiConfiguration';
-
-import {
-    Configuration,
-    CreateUserRequest,
-    ResponseError,
-    TokensApi,
-    UpdateUserRequest,
-    UsersApi,
-    UserDevicesApi,
-    UserInfo,
-    WebAuthnDevices,
-} from '../generated';
+import { PassageConfig } from '../types/PassageConfig.js';
+import { PassageError } from './PassageError.js';
+import { apiConfiguration } from '../utils/apiConfiguration.js';
+import { Configuration, ResponseError } from '../generated/runtime.js';
+import { CreateUserRequest } from '../generated/models/CreateUserRequest.js';
+import { UpdateUserRequest } from '../generated/models/UpdateUserRequest.js';
+import { TokensApi } from '../generated/apis/TokensApi.js';
+import { UsersApi } from '../generated/apis/UsersApi.js';
+import { UserDevicesApi } from '../generated/apis/UserDevicesApi.js';
+import { UserInfo } from '../generated/models/UserInfo.js';
+import { WebAuthnDevices } from '../generated/models/WebAuthnDevices.js';
 
 /***/
-export default class User {
+export class User {
     #appID: string;
     #apiKey: string;
     #client: UsersApi;

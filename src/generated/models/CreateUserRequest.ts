@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { exists } from '../runtime.js';
 /**
  * 
  * @export
@@ -42,7 +42,7 @@ export interface CreateUserRequest {
 /**
  * Check if a given object implements the CreateUserRequest interface.
  */
-export function instanceOfCreateUserRequest(value: object): boolean {
+export function instanceOfCreateUserRequest(_value: object): boolean {
     let isInstance = true;
 
     return isInstance;
@@ -52,7 +52,7 @@ export function CreateUserRequestFromJSON(json: any): CreateUserRequest {
     return CreateUserRequestFromJSONTyped(json, false);
 }
 
-export function CreateUserRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateUserRequest {
+export function CreateUserRequestFromJSONTyped(json: any, _ignoreDiscriminator: boolean): CreateUserRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }

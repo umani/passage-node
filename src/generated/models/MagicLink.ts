@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { MagicLinkType } from './MagicLinkType';
+import type { MagicLinkType } from './MagicLinkType.js';
 import {
     MagicLinkTypeFromJSON,
-    MagicLinkTypeFromJSONTyped,
     MagicLinkTypeToJSON,
-} from './MagicLinkType';
+} from './MagicLinkType.js';
 
 /**
  * 
@@ -111,7 +109,7 @@ export function MagicLinkFromJSON(json: any): MagicLink {
     return MagicLinkFromJSONTyped(json, false);
 }
 
-export function MagicLinkFromJSONTyped(json: any, ignoreDiscriminator: boolean): MagicLink {
+export function MagicLinkFromJSONTyped(json: any, _ignoreDiscriminator: boolean): MagicLink {
     if ((json === undefined) || (json === null)) {
         return json;
     }

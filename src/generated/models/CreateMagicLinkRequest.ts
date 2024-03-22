@@ -12,19 +12,17 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { MagicLinkChannel } from './MagicLinkChannel';
+import { exists } from '../runtime.js';
+import type { MagicLinkChannel } from './MagicLinkChannel.js';
 import {
     MagicLinkChannelFromJSON,
-    MagicLinkChannelFromJSONTyped,
     MagicLinkChannelToJSON,
-} from './MagicLinkChannel';
-import type { MagicLinkType } from './MagicLinkType';
+} from './MagicLinkChannel.js';
+import type { MagicLinkType } from './MagicLinkType.js';
 import {
     MagicLinkTypeFromJSON,
-    MagicLinkTypeFromJSONTyped,
     MagicLinkTypeToJSON,
-} from './MagicLinkType';
+} from './MagicLinkType.js';
 
 /**
  * 
@@ -115,7 +113,7 @@ export function CreateMagicLinkRequestFromJSON(json: any): CreateMagicLinkReques
     return CreateMagicLinkRequestFromJSONTyped(json, false);
 }
 
-export function CreateMagicLinkRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateMagicLinkRequest {
+export function CreateMagicLinkRequestFromJSONTyped(json: any, _ignoreDiscriminator: boolean): CreateMagicLinkRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }

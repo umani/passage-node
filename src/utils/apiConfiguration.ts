@@ -1,4 +1,4 @@
-import { Configuration, ConfigurationParameters } from '../generated';
+import { Configuration, ConfigurationParameters } from '../generated/runtime.js';
 import fetch from 'node-fetch';
 
 /**
@@ -7,14 +7,14 @@ import fetch from 'node-fetch';
  * @param {ConfigurationParameters} config options for Configuration.
  * @return {Configuration} Configuration object
  */
-export default function apiConfiguration(config?: ConfigurationParameters): Configuration {
+export function apiConfiguration(config?: ConfigurationParameters): Configuration {
     const configuration = new Configuration({
         accessToken: config?.accessToken,
         fetchApi: fetch as unknown as ConfigurationParameters['fetchApi'],
         headers: {
             ...config?.headers,
             'Authorization': `Bearer ${config?.accessToken}`,
-            'Passage-Version': process.env.npm_package_version || '',
+            'Passage-Version': process.env['npm_package_version'] || '',
         },
         middleware: [],
     });

@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { TtlDisplayUnit } from './TtlDisplayUnit';
+import type { TtlDisplayUnit } from './TtlDisplayUnit.js';
 import {
     TtlDisplayUnitFromJSON,
-    TtlDisplayUnitFromJSONTyped,
     TtlDisplayUnitToJSON,
-} from './TtlDisplayUnit';
+} from './TtlDisplayUnit.js';
 
 /**
  * 
@@ -63,7 +61,7 @@ export function MagicLinkAuthMethodFromJSON(json: any): MagicLinkAuthMethod {
     return MagicLinkAuthMethodFromJSONTyped(json, false);
 }
 
-export function MagicLinkAuthMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): MagicLinkAuthMethod {
+export function MagicLinkAuthMethodFromJSONTyped(json: any, _ignoreDiscriminator: boolean): MagicLinkAuthMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }

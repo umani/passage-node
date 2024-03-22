@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { UserInfo } from './UserInfo';
+import type { UserInfo } from './UserInfo.js';
 import {
     UserInfoFromJSON,
-    UserInfoFromJSONTyped,
     UserInfoToJSON,
-} from './UserInfo';
+} from './UserInfo.js';
 
 /**
  * 
@@ -48,7 +46,7 @@ export function UserResponseFromJSON(json: any): UserResponse {
     return UserResponseFromJSONTyped(json, false);
 }
 
-export function UserResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserResponse {
+export function UserResponseFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }

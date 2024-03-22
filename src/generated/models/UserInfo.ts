@@ -12,37 +12,31 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { UserRecentEvent } from './UserRecentEvent';
+import type { UserRecentEvent } from './UserRecentEvent.js';
 import {
     UserRecentEventFromJSON,
-    UserRecentEventFromJSONTyped,
     UserRecentEventToJSON,
-} from './UserRecentEvent';
-import type { UserSocialConnections } from './UserSocialConnections';
+} from './UserRecentEvent.js';
+import type { UserSocialConnections } from './UserSocialConnections.js';
 import {
     UserSocialConnectionsFromJSON,
-    UserSocialConnectionsFromJSONTyped,
     UserSocialConnectionsToJSON,
-} from './UserSocialConnections';
-import type { UserStatus } from './UserStatus';
+} from './UserSocialConnections.js';
+import type { UserStatus } from './UserStatus.js';
 import {
     UserStatusFromJSON,
-    UserStatusFromJSONTyped,
     UserStatusToJSON,
-} from './UserStatus';
-import type { WebAuthnDevices } from './WebAuthnDevices';
+} from './UserStatus.js';
+import type { WebAuthnDevices } from './WebAuthnDevices.js';
 import {
     WebAuthnDevicesFromJSON,
-    WebAuthnDevicesFromJSONTyped,
     WebAuthnDevicesToJSON,
-} from './WebAuthnDevices';
-import type { WebAuthnType } from './WebAuthnType';
+} from './WebAuthnDevices.js';
+import type { WebAuthnType } from './WebAuthnType.js';
 import {
     WebAuthnTypeFromJSON,
-    WebAuthnTypeFromJSONTyped,
     WebAuthnTypeToJSON,
-} from './WebAuthnType';
+} from './WebAuthnType.js';
 
 /**
  * 
@@ -177,7 +171,7 @@ export function UserInfoFromJSON(json: any): UserInfo {
     return UserInfoFromJSONTyped(json, false);
 }
 
-export function UserInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserInfo {
+export function UserInfoFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserInfo {
     if ((json === undefined) || (json === null)) {
         return json;
     }

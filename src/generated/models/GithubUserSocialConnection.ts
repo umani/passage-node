@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -62,7 +61,7 @@ export function GithubUserSocialConnectionFromJSON(json: any): GithubUserSocialC
     return GithubUserSocialConnectionFromJSONTyped(json, false);
 }
 
-export function GithubUserSocialConnectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): GithubUserSocialConnection {
+export function GithubUserSocialConnectionFromJSONTyped(json: any, _ignoreDiscriminator: boolean): GithubUserSocialConnection {
     if ((json === undefined) || (json === null)) {
         return json;
     }

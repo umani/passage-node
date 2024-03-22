@@ -34,7 +34,7 @@ export function TechnologiesFromJSON(json: any): Technologies {
     return TechnologiesFromJSONTyped(json, false);
 }
 
-export function TechnologiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): Technologies {
+export function TechnologiesFromJSONTyped(json: any, _ignoreDiscriminator: boolean): Technologies {
     return json as Technologies;
 }
 

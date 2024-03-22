@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { WebAuthnDevices } from './WebAuthnDevices';
+import type { WebAuthnDevices } from './WebAuthnDevices.js';
 import {
     WebAuthnDevicesFromJSON,
-    WebAuthnDevicesFromJSONTyped,
     WebAuthnDevicesToJSON,
-} from './WebAuthnDevices';
+} from './WebAuthnDevices.js';
 
 /**
  * 
@@ -48,7 +46,7 @@ export function ListDevicesResponseFromJSON(json: any): ListDevicesResponse {
     return ListDevicesResponseFromJSONTyped(json, false);
 }
 
-export function ListDevicesResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListDevicesResponse {
+export function ListDevicesResponseFromJSONTyped(json: any, _ignoreDiscriminator: boolean): ListDevicesResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }

@@ -12,25 +12,22 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { AppleUserSocialConnection } from './AppleUserSocialConnection';
+import { exists } from '../runtime.js';
+import type { AppleUserSocialConnection } from './AppleUserSocialConnection.js';
 import {
     AppleUserSocialConnectionFromJSON,
-    AppleUserSocialConnectionFromJSONTyped,
     AppleUserSocialConnectionToJSON,
-} from './AppleUserSocialConnection';
-import type { GithubUserSocialConnection } from './GithubUserSocialConnection';
+} from './AppleUserSocialConnection.js';
+import type { GithubUserSocialConnection } from './GithubUserSocialConnection.js';
 import {
     GithubUserSocialConnectionFromJSON,
-    GithubUserSocialConnectionFromJSONTyped,
     GithubUserSocialConnectionToJSON,
-} from './GithubUserSocialConnection';
-import type { GoogleUserSocialConnection } from './GoogleUserSocialConnection';
+} from './GithubUserSocialConnection.js';
+import type { GoogleUserSocialConnection } from './GoogleUserSocialConnection.js';
 import {
     GoogleUserSocialConnectionFromJSON,
-    GoogleUserSocialConnectionFromJSONTyped,
     GoogleUserSocialConnectionToJSON,
-} from './GoogleUserSocialConnection';
+} from './GoogleUserSocialConnection.js';
 
 /**
  * 
@@ -61,7 +58,7 @@ export interface UserSocialConnections {
 /**
  * Check if a given object implements the UserSocialConnections interface.
  */
-export function instanceOfUserSocialConnections(value: object): boolean {
+export function instanceOfUserSocialConnections(_value: object): boolean {
     let isInstance = true;
 
     return isInstance;
@@ -71,7 +68,7 @@ export function UserSocialConnectionsFromJSON(json: any): UserSocialConnections 
     return UserSocialConnectionsFromJSONTyped(json, false);
 }
 
-export function UserSocialConnectionsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserSocialConnections {
+export function UserSocialConnectionsFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserSocialConnections {
     if ((json === undefined) || (json === null)) {
         return json;
     }

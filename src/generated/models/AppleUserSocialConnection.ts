@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -62,7 +61,7 @@ export function AppleUserSocialConnectionFromJSON(json: any): AppleUserSocialCon
     return AppleUserSocialConnectionFromJSONTyped(json, false);
 }
 
-export function AppleUserSocialConnectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): AppleUserSocialConnection {
+export function AppleUserSocialConnectionFromJSONTyped(json: any, _ignoreDiscriminator: boolean): AppleUserSocialConnection {
     if ((json === undefined) || (json === null)) {
         return json;
     }

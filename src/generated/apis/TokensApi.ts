@@ -13,20 +13,7 @@
  */
 
 
-import * as runtime from '../runtime';
-import type {
-  Model401Error,
-  Model404Error,
-  Model500Error,
-} from '../models/index';
-import {
-    Model401ErrorFromJSON,
-    Model401ErrorToJSON,
-    Model404ErrorFromJSON,
-    Model404ErrorToJSON,
-    Model500ErrorFromJSON,
-    Model500ErrorToJSON,
-} from '../models/index';
+import { RequiredError, BaseAPI, HTTPHeaders, VoidApiResponse, InitOverrideFunction, ApiResponse } from '../runtime.js';
 
 export interface RevokeUserRefreshTokensRequest {
     appId: string;
@@ -36,24 +23,24 @@ export interface RevokeUserRefreshTokensRequest {
 /**
  * 
  */
-export class TokensApi extends runtime.BaseAPI {
+export class TokensApi extends BaseAPI {
 
     /**
      * Revokes all refresh tokens for a user
      * Revokes refresh tokens
      */
-    async revokeUserRefreshTokensRaw(requestParameters: RevokeUserRefreshTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async revokeUserRefreshTokensRaw(requestParameters: RevokeUserRefreshTokensRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling revokeUserRefreshTokens.');
+            throw new RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling revokeUserRefreshTokens.');
         }
 
         if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling revokeUserRefreshTokens.');
+            throw new RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling revokeUserRefreshTokens.');
         }
 
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        const headerParameters: HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -70,15 +57,14 @@ export class TokensApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new VoidApiResponse(response);
     }
 
     /**
      * Revokes all refresh tokens for a user
      * Revokes refresh tokens
      */
-    async revokeUserRefreshTokens(requestParameters: RevokeUserRefreshTokensRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async revokeUserRefreshTokens(requestParameters: RevokeUserRefreshTokensRequest, initOverrides?: RequestInit | InitOverrideFunction): Promise<void> {
         await this.revokeUserRefreshTokensRaw(requestParameters, initOverrides);
     }
-
 }

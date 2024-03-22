@@ -12,13 +12,12 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { TtlDisplayUnit } from './TtlDisplayUnit';
+import { exists } from '../runtime.js';
+import type { TtlDisplayUnit } from './TtlDisplayUnit.js';
 import {
     TtlDisplayUnitFromJSON,
-    TtlDisplayUnitFromJSONTyped,
     TtlDisplayUnitToJSON,
-} from './TtlDisplayUnit';
+} from './TtlDisplayUnit.js';
 
 /**
  * 
@@ -50,7 +49,7 @@ export interface UpdateOtpAuthMethod {
 /**
  * Check if a given object implements the UpdateOtpAuthMethod interface.
  */
-export function instanceOfUpdateOtpAuthMethod(value: object): boolean {
+export function instanceOfUpdateOtpAuthMethod(_value: object): boolean {
     let isInstance = true;
 
     return isInstance;
@@ -60,7 +59,7 @@ export function UpdateOtpAuthMethodFromJSON(json: any): UpdateOtpAuthMethod {
     return UpdateOtpAuthMethodFromJSONTyped(json, false);
 }
 
-export function UpdateOtpAuthMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateOtpAuthMethod {
+export function UpdateOtpAuthMethodFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UpdateOtpAuthMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }

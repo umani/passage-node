@@ -12,25 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { MagicLinkAuthMethod } from './MagicLinkAuthMethod';
+import type { MagicLinkAuthMethod } from './MagicLinkAuthMethod.js';
 import {
     MagicLinkAuthMethodFromJSON,
-    MagicLinkAuthMethodFromJSONTyped,
     MagicLinkAuthMethodToJSON,
-} from './MagicLinkAuthMethod';
-import type { OtpAuthMethod } from './OtpAuthMethod';
+} from './MagicLinkAuthMethod.js';
+import type { OtpAuthMethod } from './OtpAuthMethod.js';
 import {
     OtpAuthMethodFromJSON,
-    OtpAuthMethodFromJSONTyped,
     OtpAuthMethodToJSON,
-} from './OtpAuthMethod';
-import type { PasskeysAuthMethod } from './PasskeysAuthMethod';
+} from './OtpAuthMethod.js';
+import type { PasskeysAuthMethod } from './PasskeysAuthMethod.js';
 import {
     PasskeysAuthMethodFromJSON,
-    PasskeysAuthMethodFromJSONTyped,
     PasskeysAuthMethodToJSON,
-} from './PasskeysAuthMethod';
+} from './PasskeysAuthMethod.js';
 
 /**
  * Denotes what methods this app is allowed to use for authentication with configurations
@@ -74,7 +70,7 @@ export function AuthMethodsFromJSON(json: any): AuthMethods {
     return AuthMethodsFromJSONTyped(json, false);
 }
 
-export function AuthMethodsFromJSONTyped(json: any, ignoreDiscriminator: boolean): AuthMethods {
+export function AuthMethodsFromJSONTyped(json: any, _ignoreDiscriminator: boolean): AuthMethods {
     if ((json === undefined) || (json === null)) {
         return json;
     }

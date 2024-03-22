@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -58,7 +57,7 @@ export function Model401ErrorFromJSON(json: any): Model401Error {
     return Model401ErrorFromJSONTyped(json, false);
 }
 
-export function Model401ErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean): Model401Error {
+export function Model401ErrorFromJSONTyped(json: any, _ignoreDiscriminator: boolean): Model401Error {
     if ((json === undefined) || (json === null)) {
         return json;
     }

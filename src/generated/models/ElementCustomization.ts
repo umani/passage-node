@@ -12,13 +12,12 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { FontFamily } from './FontFamily';
+import { exists } from '../runtime.js';
+import type { FontFamily } from './FontFamily.js';
 import {
     FontFamilyFromJSON,
-    FontFamilyFromJSONTyped,
     FontFamilyToJSON,
-} from './FontFamily';
+} from './FontFamily.js';
 
 /**
  * 
@@ -155,7 +154,7 @@ export interface ElementCustomization {
 /**
  * Check if a given object implements the ElementCustomization interface.
  */
-export function instanceOfElementCustomization(value: object): boolean {
+export function instanceOfElementCustomization(_value: object): boolean {
     let isInstance = true;
 
     return isInstance;
@@ -165,7 +164,7 @@ export function ElementCustomizationFromJSON(json: any): ElementCustomization {
     return ElementCustomizationFromJSONTyped(json, false);
 }
 
-export function ElementCustomizationFromJSONTyped(json: any, ignoreDiscriminator: boolean): ElementCustomization {
+export function ElementCustomizationFromJSONTyped(json: any, _ignoreDiscriminator: boolean): ElementCustomization {
     if ((json === undefined) || (json === null)) {
         return json;
     }

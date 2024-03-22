@@ -12,19 +12,16 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { WebAuthnIcons } from './WebAuthnIcons';
+import type { WebAuthnIcons } from './WebAuthnIcons.js';
 import {
     WebAuthnIconsFromJSON,
-    WebAuthnIconsFromJSONTyped,
     WebAuthnIconsToJSON,
-} from './WebAuthnIcons';
-import type { WebAuthnType } from './WebAuthnType';
+} from './WebAuthnIcons.js';
+import type { WebAuthnType } from './WebAuthnType.js';
 import {
     WebAuthnTypeFromJSON,
-    WebAuthnTypeFromJSONTyped,
     WebAuthnTypeToJSON,
-} from './WebAuthnType';
+} from './WebAuthnType.js';
 
 /**
  * 
@@ -110,7 +107,7 @@ export function WebAuthnDevicesFromJSON(json: any): WebAuthnDevices {
     return WebAuthnDevicesFromJSONTyped(json, false);
 }
 
-export function WebAuthnDevicesFromJSONTyped(json: any, ignoreDiscriminator: boolean): WebAuthnDevices {
+export function WebAuthnDevicesFromJSONTyped(json: any, _ignoreDiscriminator: boolean): WebAuthnDevices {
     if ((json === undefined) || (json === null)) {
         return json;
     }

@@ -12,13 +12,11 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { LayoutConfig } from './LayoutConfig';
+import type { LayoutConfig } from './LayoutConfig.js';
 import {
     LayoutConfigFromJSON,
-    LayoutConfigFromJSONTyped,
     LayoutConfigToJSON,
-} from './LayoutConfig';
+} from './LayoutConfig.js';
 
 /**
  * 
@@ -55,7 +53,7 @@ export function LayoutsFromJSON(json: any): Layouts {
     return LayoutsFromJSONTyped(json, false);
 }
 
-export function LayoutsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Layouts {
+export function LayoutsFromJSONTyped(json: any, _ignoreDiscriminator: boolean): Layouts {
     if ((json === undefined) || (json === null)) {
         return json;
     }

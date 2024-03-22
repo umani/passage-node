@@ -226,6 +226,10 @@ export class BaseAPI {
         }
         for (const middleware of this.middleware) {
             if (middleware.post) {
+                if (response === undefined) {
+                    return response
+                }
+
                 response = await middleware.post({
                     fetch: this.fetchApi,
                     url: fetchParams.url,
@@ -266,7 +270,7 @@ export class ResponseError extends Error {
 
 export class FetchError extends Error {
     override name: "FetchError" = "FetchError";
-    constructor(public cause: Error, msg?: string) {
+    constructor(public override cause: Error, msg?: string) {
         super(msg);
     }
 }

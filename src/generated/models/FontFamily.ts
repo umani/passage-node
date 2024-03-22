@@ -46,7 +46,7 @@ export function FontFamilyFromJSON(json: any): FontFamily {
     return FontFamilyFromJSONTyped(json, false);
 }
 
-export function FontFamilyFromJSONTyped(json: any, ignoreDiscriminator: boolean): FontFamily {
+export function FontFamilyFromJSONTyped(json: any, _ignoreDiscriminator: boolean): FontFamily {
     return json as FontFamily;
 }
 

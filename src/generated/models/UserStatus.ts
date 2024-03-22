@@ -29,7 +29,7 @@ export function UserStatusFromJSON(json: any): UserStatus {
     return UserStatusFromJSONTyped(json, false);
 }
 
-export function UserStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserStatus {
+export function UserStatusFromJSONTyped(json: any, _ignoreDiscriminator: boolean): UserStatus {
     return json as UserStatus;
 }
 

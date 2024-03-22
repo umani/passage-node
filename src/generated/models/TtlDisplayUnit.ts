@@ -34,7 +34,7 @@ export function TtlDisplayUnitFromJSON(json: any): TtlDisplayUnit {
     return TtlDisplayUnitFromJSONTyped(json, false);
 }
 
-export function TtlDisplayUnitFromJSONTyped(json: any, ignoreDiscriminator: boolean): TtlDisplayUnit {
+export function TtlDisplayUnitFromJSONTyped(json: any, _ignoreDiscriminator: boolean): TtlDisplayUnit {
     return json as TtlDisplayUnit;
 }
 
