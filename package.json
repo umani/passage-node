@@ -28,25 +28,6 @@
         "ts-node-dev": "^2.0.0",
         "typescript": "5.0.2"
     },
-    "files": [
-        "lib/",
-        "CHANGELOG.md"
-    ],
-    "scripts": {
-        "lint": "eslint 'src/**/*.ts?(x)' --fix",
-        "lint:ci": "eslint 'src/**/*.ts?(x)'",
-        "format": "pretty-quick --staged",
-        "prepare": "husky install",
-        "dev": "ts-node-dev --respawn testServer.ts",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-        "change": "beachball change",
-        "publish": "beachball publish -y",
-        "set-version": "echo '{\"version\":\"'$npm_package_name' '$npm_package_version'\"}' > ./src/utils/config.json",
-        "beachball-bump": "beachball bump",
-        "beachball-check": "beachball check"
-    },
     "keywords": [
         "passage",
         "identity",
